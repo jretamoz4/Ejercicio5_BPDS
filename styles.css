@@ -36,93 +36,109 @@ body {
     flex-direction: column;
     flex-basis: calc(33.333% - 1.5rem);
     min-width: 320px;
-    position: relative; /* Necesario para el z-index */
-    z-index: 10;
-    
-    /* CAMBIO: Se añade 'transform' y 'z-index' a la transición */
-    transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+    transition: transform 0.3s ease;
 }
-
-/* --- Estilos para el Pop-up y el Foco --- */
-.artist-card.expanded {
-    transform: scale(1.05); /* Efecto de expansión */
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-    z-index: 100; /* Se asegura que la tarjeta expandida esté por encima de las demás */
+.artist-card:hover {
+    transform: translateY(-8px);
 }
-
-/* Cuando una tarjeta está expandida, se atenúan las otras */
-.artists-wrapper.card-is-expanded .artist-card:not(.expanded) {
-    opacity: 0.5;
-    filter: blur(2px);
-    transform: scale(0.98);
-}
-
-
-/* --- Imagen del Artista --- */
 .artist-image {
     width: 100%;
     height: 300px;
     object-fit: cover;
 }
-
-/* --- Contenido de la Tarjeta --- */
 .content {
     padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
     flex-grow: 1;
 }
-
 .artist-name {
     font-size: 1.8rem;
     font-weight: 700;
     color: #1c1e21;
-    margin: 0 0 1rem 0;
+    margin: 0;
+}
+.summary-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #6c757d;
+    margin-top: 0.5rem;
+}
+/* Ocultamos el contenido completo en la tarjeta */
+.full-description {
+    display: none;
 }
 
-.section {
-    margin-top: 1rem;
-    flex-grow: 1;
+/* --- Estilos del Pop-up Flotante --- */
+.popup {
+    position: absolute; /* Cambiado a absolute para seguir al cursor */
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 350px;
+    z-index: 1000;
+    padding: 1.5rem;
+    border: 1px solid #e9ecef;
+    
+    /* Estados para la animación */
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.95) translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    pointer-events: none; /* Evita que el pop-up interfiera con el cursor */
 }
 
-.section-title {
+.popup.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1) translateY(0);
+}
+
+/* Estilos para el contenido dentro del pop-up */
+.popup .section-title {
     font-size: 1.1rem;
     font-weight: 600;
     color: #0056b3;
     border-bottom: 1px solid #e9ecef;
     padding-bottom: 0.5rem;
+    margin-top: 1rem;
     margin-bottom: 1rem;
 }
-
-.section-text {
+.popup .section-text {
     font-size: 1rem;
     line-height: 1.6;
     color: #495057;
 }
-
-.album-name {
+.popup .album-name {
     font-style: italic;
     font-weight: 500;
 }
+.popup .section:first-child .section-title {
+    margin-top: 0;
+}
+
 
 /* --- Responsividad --- */
-@media (max-width: 1100px) {
+@media (max-width: 1024px) {
+    .artists-wrapper {
+        justify-content: center;
+    }
     .artist-card {
         flex-basis: calc(50% - 1.5rem);
     }
 }
 @media (max-width: 768px) {
     body { padding: 1.5rem; }
-    .artists-wrapper { gap: 1.5rem; }
-    .artist-card { flex-basis: 100%; }
-    .main-header { font-size: 2.2rem; }
-    /* Desactivamos la animación compleja en móvil para mejor rendimiento */
-    .artists-wrapper.card-is-expanded .artist-card:not(.expanded) {
-        opacity: 1;
-        filter: none;
-        transform: none;
+    .artists-wrapper {
+        flex-direction: column;
+        align-items: center;
     }
-    .artist-card.expanded {
-        transform: scale(1.02);
+    .artist-card {
+        flex-basis: 100%;
+        max-width: 400px;
+    }
+    .main-header { font-size: 2.2rem; }
+    /* Desactivamos el pop-up en móvil para una mejor experiencia táctil */
+    .popup {
+        display: none;
     }
 }
