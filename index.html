@@ -1,11 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Músicos Icónicos: The Beatles</title>
+    <style>
+        /* --- Estilos Generales --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* --- Contenedor Principal (Tarjeta del Artista) --- */
+        .artist-card {
+            max-width: 700px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden; /* Mantiene la imagen dentro de los bordes redondeados */
+        }
+
+        /* --- Imagen del Artista --- */
+        .artist-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+        }
+        
+        /* --- Contenido de Información --- */
+        .content {
+            padding: 2rem 2.5rem;
+        }
+
+        /* --- Títulos y Texto --- */
+        .artist-name {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1c1e21;
+            margin: 0 0 1rem 0;
+        }
+
+        .section {
+            margin-top: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0056b3;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #495057;
+        }
+
+        .album-name {
+            font-style: italic;
+            font-weight: 500;
+        }
+    </style>
 </head>
 <body>
-    
+
+    <div class="artist-card">
+        <!-- Imagen del músico o banda -->
+        <img class="artist-image" src="https://hips.hearstapps.com/delish/assets/17/40/1506956944-1506773146-gettyimages-89724270-1506718401.jpg?crop=1.00xw:0.930xh;0,0&resize=1200:*" alt="The Beatles cruzando la calle en Abbey Road.">
+
+        <div class="content">
+            <header>
+                <!-- Nombre del músico o banda -->
+                <h1 class="artist-name">The Beatles</h1>
+            </header>
+
+            <main>
+                <!-- Biografía breve -->
+                <section class="section">
+                    <h2 class="section-title">Biografía</h2>
+                    <p class="section-text">
+                        Considerada la banda más influyente de la historia, The Beatles revolucionó la música popular en la década de 1960. Originarios de Liverpool, Inglaterra, el cuarteto conformado por John Lennon, Paul McCartney, George Harrison y Ringo Starr lideró la "Invasión Británica" y experimentó con géneros que iban desde el pop y el rock and roll hasta la psicodelia, dejando un legado imborrable en la cultura mundial.
+                    </p>
+                </section>
+
+                <!-- Álbum más representativo -->
+                <section class="section">
+                    <h2 class="section-title">Álbum Más Representativo</h2>
+                    <p class="section-text">
+                        <span class="album-name">Sgt. Pepper's Lonely Hearts Club Band (1967)</span>. Este álbum conceptual es a menudo citado como uno de los discos más importantes de todos los tiempos. Rompió barreras en la producción musical, el diseño de portada y la cohesión artística, marcando un punto de inflexión en la historia de la música grabada.
+                    </p>
+                </section>
+            </main>
+        </div>
+    </div>
+
 </body>
 </html>
+
