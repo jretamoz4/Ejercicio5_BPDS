@@ -17,11 +17,10 @@ body {
 }
 
 /* --- Contenedor de Artistas --- */
-/* CAMBIO: Se pasa de Grid a Flexbox para centrar la última fila */
 .artists-wrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Centra las tarjetas horizontalmente */
+    justify-content: center;
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -35,18 +34,29 @@ body {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-basis: calc(33.333% - 1.5rem);
+    min-width: 320px;
+    position: relative; /* Necesario para el z-index */
+    z-index: 10;
     
-    /* CAMBIO: Se define un ancho base para lograr 3 columnas */
-    /* Calculamos el ancho restando el espacio del 'gap' */
-    flex-basis: calc(33.33% - 1.5rem);
-    min-width: 320px; /* Ancho mínimo para evitar que las tarjetas se aplasten */
+    /* CAMBIO: Se añade 'transform' y 'z-index' a la transición */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
 }
 
-.artist-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+/* --- Estilos para el Pop-up y el Foco --- */
+.artist-card.expanded {
+    transform: scale(1.05); /* Efecto de expansión */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    z-index: 100; /* Se asegura que la tarjeta expandida esté por encima de las demás */
 }
+
+/* Cuando una tarjeta está expandida, se atenúan las otras */
+.artists-wrapper.card-is-expanded .artist-card:not(.expanded) {
+    opacity: 0.5;
+    filter: blur(2px);
+    transform: scale(0.98);
+}
+
 
 /* --- Imagen del Artista --- */
 .artist-image {
@@ -96,27 +106,23 @@ body {
 }
 
 /* --- Responsividad --- */
-/* CAMBIO: Lógica de anchos ajustada para Flexbox */
-
-/* Para tablets (2 columnas) */
 @media (max-width: 1100px) {
     .artist-card {
         flex-basis: calc(50% - 1.5rem);
     }
 }
-
-/* Para móviles (1 columna) */
 @media (max-width: 768px) {
-    body {
-        padding: 1.5rem;
+    body { padding: 1.5rem; }
+    .artists-wrapper { gap: 1.5rem; }
+    .artist-card { flex-basis: 100%; }
+    .main-header { font-size: 2.2rem; }
+    /* Desactivamos la animación compleja en móvil para mejor rendimiento */
+    .artists-wrapper.card-is-expanded .artist-card:not(.expanded) {
+        opacity: 1;
+        filter: none;
+        transform: none;
     }
-    .artists-wrapper {
-        gap: 1.5rem;
-    }
-    .artist-card {
-        flex-basis: 100%;
-    }
-    .main-header {
-        font-size: 2.2rem;
+    .artist-card.expanded {
+        transform: scale(1.02);
     }
 }
