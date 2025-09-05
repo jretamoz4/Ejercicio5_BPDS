@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Músicos Icónicos: The Beatles</title>
+    <title>Músicos Icónicos</title>
     <style>
         /* --- Estilos Generales --- */
         body {
@@ -12,10 +12,14 @@
             color: #333;
             margin: 0;
             padding: 2rem;
+        }
+
+        /* --- Contenedor para las tarjetas de artistas --- */
+        .artists-wrapper {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            min-height: 100vh;
+            gap: 2.5rem; /* Espacio entre las tarjetas */
         }
 
         /* --- Contenedor Principal (Tarjeta del Artista) --- */
@@ -26,6 +30,11 @@
             border-radius: 16px;
             box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
             overflow: hidden; /* Mantiene la imagen dentro de los bordes redondeados */
+            transition: transform 0.3s ease;
+        }
+
+        .artist-card:hover {
+            transform: translateY(-5px);
         }
 
         /* --- Imagen del Artista --- */
@@ -75,36 +84,55 @@
 </head>
 <body>
 
-    <div class="artist-card">
-        <!-- Imagen del músico o banda -->
-        <img class="artist-image" src="https://hips.hearstapps.com/delish/assets/17/40/1506956944-1506773146-gettyimages-89724270-1506718401.jpg?crop=1.00xw:0.930xh;0,0&resize=1200:*" alt="The Beatles cruzando la calle en Abbey Road.">
+    <div class="artists-wrapper">
 
-        <div class="content">
-            <header>
-                <!-- Nombre del músico o banda -->
-                <h1 class="artist-name">The Beatles</h1>
-            </header>
-
-            <main>
-                <!-- Biografía breve -->
-                <section class="section">
-                    <h2 class="section-title">Biografía</h2>
-                    <p class="section-text">
-                        Considerada la banda más influyente de la historia, The Beatles revolucionó la música popular en la década de 1960. Originarios de Liverpool, Inglaterra, el cuarteto conformado por John Lennon, Paul McCartney, George Harrison y Ringo Starr lideró la "Invasión Británica" y experimentó con géneros que iban desde el pop y el rock and roll hasta la psicodelia, dejando un legado imborrable en la cultura mundial.
-                    </p>
-                </section>
-
-                <!-- Álbum más representativo -->
-                <section class="section">
-                    <h2 class="section-title">Álbum Más Representativo</h2>
-                    <p class="section-text">
-                        <span class="album-name">Sgt. Pepper's Lonely Hearts Club Band (1967)</span>. Este álbum conceptual es a menudo citado como uno de los discos más importantes de todos los tiempos. Rompió barreras en la producción musical, el diseño de portada y la cohesión artística, marcando un punto de inflexión en la historia de la música grabada.
-                    </p>
-                </section>
-            </main>
+        <!-- Tarjeta de Artista 1: The Beatles -->
+        <div class="artist-card">
+            <img class="artist-image" src="https://hips.hearstapps.com/delish/assets/17/40/1506956944-1506773146-gettyimages-89724270-1506718401.jpg?crop=1.00xw:0.930xh;0,0&resize=1200:*" alt="The Beatles cruzando la calle en Abbey Road.">
+            <div class="content">
+                <header>
+                    <h1 class="artist-name">The Beatles</h1>
+                </header>
+                <main>
+                    <section class="section">
+                        <h2 class="section-title">Biografía</h2>
+                        <p class="section-text">
+                            Considerada la banda más influyente de la historia, The Beatles revolucionó la música popular en la década de 1960. Originarios de Liverpool, el cuarteto lideró la "Invasión Británica" y experimentó con géneros que iban desde el pop hasta la psicodelia, dejando un legado imborrable.
+                        </p>
+                    </section>
+                    <section class="section">
+                        <h2 class="section-title">Álbum Más Representativo</h2>
+                        <p class="section-text">
+                            <span class="album-name">Sgt. Pepper's Lonely Hearts Club Band (1967)</span>. Este álbum conceptual es a menudo citado como uno de los discos más importantes de todos los tiempos, marcando un punto de inflexión en la historia de la música grabada.
+                        </p>
+                    </section>
+                </main>
+            </div>
         </div>
+
+        <!-- Tarjeta de Artista 2: Michael Jackson -->
+        <div class="artist-card">
+            <img class="artist-image" src="https://static.wikia.nocookie.net/michael-jackson-espanol/images/2/28/Michael_Jackson.webp/revision/latest?cb=20220626235224&path-prefix=es" alt="Michael Jackson en una de sus icónicas poses de baile.">
+            <div class="content">
+                <header>
+                    <h1 class="artist-name">Michael Jackson</h1>
+                </header>
+                <main>
+                    <section class="section">
+                        <h2 class="section-title">Biografía</h2>
+                        <p class="section-text">
+                        </p>
+                    </section>
+                    <section class="section">
+                        <h2 class="section-title">Álbum Más Representativo</h2>
+                        <p class="section-text">
+                        </p>
+                    </section>
+                </main>
+            </div>
+        </div>
+
     </div>
 
 </body>
 </html>
-
